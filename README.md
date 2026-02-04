@@ -1,59 +1,100 @@
-# ChizuLab
+# Chizu Lab 🗺️
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.2.
+日本国内の主要な地図データ（タイル）と経路・場所検索APIを、同一インターフェース上で比較検討できる開発者向けWebツールです。
 
-## Development server
+Angular + Leafletを使用し、2画面分割による地図の比較や、各社APIのJSONレスポンスの確認を容易に行うことができます。
 
-To start a local development server, run:
+## 📖 概要
+
+地図アプリや位置情報サービスを開発する際、「どの地図データを使うか」「どのルート検索APIが最適か」を選定するのは大変な作業です。
+**Chizu Lab** は、以下の機能を提供することで、その選定プロセスをサポートします。
+
+* **地図の比較:** 地理院地図、OpenStreetMap、Google Mapsなどを並べて比較。
+* **APIの比較:** 経路探索や場所検索のレスポンス（JSON）と実際のルート描画を比較。
+* **実装の参考:** 各APIを利用するためのパラメータ設定やコードの参考として。
+
+### 🚧 現在の実装状況
+
+現在は **Leaflet + OpenStreetMap による基本的な地図表示** のみを実装しています。  
+その他の機能（マルチビュー比較、レイヤー切り替え、API連携など）は今後実装予定です。
+
+## ✨ 主な機能（計画）
+
+> ⚠️ **以下の機能は今後実装予定です。現在は基本的な地図表示のみ実装しています。**
+
+* **マルチビュー比較 (Split View):** ⬜ 未実装
+  * 2つの異なる地図レイヤーを左右に表示し、移動・ズーム操作を同期 (Sync Move)。
+  * デザインや詳細度の違いを直感的に把握可能。
+* **レイヤー切り替え:** ⬜ 未実装
+  * 日本国内で利用可能な主要タイルサーバーへの切り替え。
+* **APIテスト & JSONビューア:** ⬜ 未実装
+  * 出発地・目的地を設定し、複数の経路検索APIへリクエストを送信。
+  * 返却されたGeoJSON/JSONデータを整形して表示。
+* **セキュアなAPIキー管理:** ⬜ 未実装
+  * 各サービスのAPIキーはブラウザの `LocalStorage` にのみ保存され、サーバーへは送信されません。
+
+## 🗺️ 対応サービス (予定含む)
+
+### 地図データ (Base Maps)
+
+* ✅ OpenStreetMap
+* ⬜ 地理院地図 (GSI Maps) **(未実装)**
+* ⬜ Google Maps (要API Key) **(未実装)**
+* ⬜ Mapbox (要Access Token) **(未実装)**
+* ⬜ Zenrin (要契約/確認) **(未実装)**
+
+### 経路・場所検索 API
+
+> ⚠️ **すべて未実装です。今後対応予定です。**
+
+* ⬜ OpenStreetMap (OSRM / GraphHopper)
+* ⬜ Google Maps (Directions / Places API)
+* ⬜ NAVITIME
+* ⬜ 駅すぱあと
+* ⬜ Yahoo! Open Local Platform (YOLP)
+* ⬜ Bing Maps
+* ⬜ MapFan
+
+## 🛠️ 技術スタック
+
+* **Framework:** [Angular](https://angular.io/) (Latest)
+* **Map Library:** [Leaflet](https://leafletjs.com/)
+* **UI Component:** Angular Material
+* **Styling:** Tailwind CSS
+* **Hosting:** GitHub Pages
+
+## 🚀 開発環境のセットアップ
+
+### 前提条件
+
+* Node.js (LTS推奨)
+* Angular CLI
+
+### インストール手順
 
 ```bash
-ng serve
+# リポジトリのクローン
+git clone [https://github.com/your-username/chizu-lab.git](https://github.com/your-username/chizu-lab.git)
+
+# ディレクトリ移動
+cd chizu-lab
+
+# 依存パッケージのインストール
+npm install
+
+# ローカルサーバーの起動
+npm run start
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+アプリケーションは `http://localhost:4200/` で利用可能です。
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### ローカルサーバーのビルドと起動
 
 ```bash
-ng generate component component-name
+# 開発用ビルド
+npm run build
+# ローカルサーバーの起動
+npx http-server ./dist/chizu-lab/browser -p 8080 -o
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+アプリケーションは `http://localhost:8080/` で利用可能です。
