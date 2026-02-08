@@ -1,0 +1,18 @@
+:host {
+  display: block;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  min-height: 52px;
+  padding: 0 16px;
+}
+
+.title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}

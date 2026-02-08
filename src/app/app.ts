@@ -1,11 +1,13 @@
-import { Component, signal, inject, DestroyRef, afterNextRender } from '@angular/core';
+import { Component, signal, inject, DestroyRef, afterNextRender, ChangeDetectionStrategy } from '@angular/core';
 import { Map, TileLayer } from 'leaflet';
+import { HeaderComponent } from './header/header';
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  imports: [HeaderComponent],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class App {
   private readonly destroyRef = inject(DestroyRef);
