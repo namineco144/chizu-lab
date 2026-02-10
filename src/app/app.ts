@@ -1,6 +1,7 @@
-import { Component, signal, inject, DestroyRef, afterNextRender, ChangeDetectionStrategy } from '@angular/core';
+import { Component, signal, inject, DestroyRef, afterNextRender, ChangeDetectionStrategy, effect, HostBinding } from '@angular/core';
 import { Map, TileLayer } from 'leaflet';
 import { HeaderComponent } from './header/header';
+import { ThemeService } from './theme.service';
 
 @Component({
   selector: 'app-root',
@@ -11,8 +12,14 @@ import { HeaderComponent } from './header/header';
 })
 export class App {
   private readonly destroyRef = inject(DestroyRef);
+  private readonly themeService = inject(ThemeService);
   protected readonly title = signal('chizu-lab');
   private myMap!: Map;
+
+  @HostBinding('class')
+  get themeClass(): string {
+    return this.themeService.theme() === 'dark' ? 'theme-dark' : '';
+  }
 
   constructor() {
     // View がレンダリングされた後にMapを初期化する

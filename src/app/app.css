@@ -1,9 +1,34 @@
 @import 'leaflet/dist/leaflet.css';
 
+/* Light theme (default) */
 :host {
+	--header-bg: #ffffff;
+	--header-border: #e5e7eb;
+	--text-primary: #1f2937;
+	--text-secondary: #6b7280;
+	--hover-bg: #f3f4f6;
+	--toggle-bg: #d1d5db;
+	--focus-color: #3b82f6;
+	--bg-primary: #ffffff;
+	--bg-secondary: #f9fafb;
+	--border-color: #e5e7eb;
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
+}
+
+/* Dark theme */
+:host.theme-dark {
+	--header-bg: #1f2937;
+	--header-border: #374151;
+	--text-primary: #f9fafb;
+	--text-secondary: #d1d5db;
+	--hover-bg: #374151;
+	--toggle-bg: #4b5563;
+	--focus-color: #60a5fa;
+	--bg-primary: #111827;
+	--bg-secondary: #1f2937;
+	--border-color: #374151;
 }
 
 .map {

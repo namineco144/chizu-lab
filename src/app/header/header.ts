@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
+import { ThemeService } from '../theme.service';
 
 @Component({
   selector: 'app-header',
@@ -8,4 +9,11 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 })
 export class HeaderComponent {
   readonly title = input.required<string>();
+  private readonly themeService = inject(ThemeService);
+
+  readonly theme = this.themeService.theme;
+
+  toggleTheme(): void {
+    this.themeService.toggleTheme();
+  }
 }

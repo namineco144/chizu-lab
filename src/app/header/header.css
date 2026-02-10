@@ -1,7 +1,8 @@
 :host {
   display: block;
-  background: #ffffff;
-  border-bottom: 1px solid #e5e7eb;
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--header-border);
+  color: var(--text-primary);
 }
 
 .header {
@@ -9,10 +10,143 @@
   align-items: center;
   min-height: 52px;
   padding: 0 16px;
+  gap: 12px;
 }
 
 .title {
   font-size: 1.1rem;
   font-weight: 600;
   letter-spacing: 0.02em;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.github-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  transition: background-color 0.2s, color 0.2s;
+  color: var(--text-secondary);
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--hover-bg);
+    color: var(--text-primary);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--focus-color);
+    outline-offset: 2px;
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 4px;
+  position: relative;
+  min-width: 80px;
+  height: 28px;
+  padding: 0 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 14px;
+  transition: background-color 0.3s;
+  background-color: var(--toggle-bg);
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--focus-color);
+    outline-offset: 2px;
+  }
+
+  .toggle-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  .theme-icon {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    stroke-width: 2;
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+  }
+
+  .sun {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    color: #f59e0b;
+  }
+
+  .moon {
+    opacity: 0;
+    transform: scale(0.8) rotate(-20deg);
+    color: #a78bfa;
+  }
+
+  &[aria-checked="true"] .sun {
+    opacity: 0;
+    transform: scale(0.8) rotate(20deg);
+  }
+
+  &[aria-checked="true"] .moon {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+
+  .toggle-track {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 34px;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    flex-shrink: 0;
+    margin-left: auto;
+  }
+
+  .toggle-thumb {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+    left: 2px;
+    top: 2px;
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+  }
+
+  &[aria-checked="true"] .toggle-thumb {
+    transform: translateX(14px);
+  }
 }
