@@ -1,4 +1,4 @@
-import { Component, signal, inject, DestroyRef, afterNextRender, ChangeDetectionStrategy, effect, HostBinding } from '@angular/core';
+import { Component, signal, inject, DestroyRef, afterNextRender, ChangeDetectionStrategy } from '@angular/core';
 import { Map, TileLayer } from 'leaflet';
 import { HeaderComponent } from './header/header';
 import { ThemeService } from './theme.service';
@@ -8,7 +8,10 @@ import { ThemeService } from './theme.service';
   imports: [HeaderComponent],
   templateUrl: './app.html',
   styleUrl: './app.css',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    '[class.theme-dark]': 'toggleTheme()'
+  }
 })
 export class App {
   private readonly destroyRef = inject(DestroyRef);
@@ -16,8 +19,7 @@ export class App {
   protected readonly title = signal('chizu-lab');
   private myMap!: Map;
 
-  @HostBinding('class')
-  get themeClass(): string {
+  toggleTheme = (): string => {
     return this.themeService.theme() === 'dark' ? 'theme-dark' : '';
   }
 

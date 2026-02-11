@@ -29,7 +29,7 @@
   justify-content: center;
   width: 40px;
   height: 40px;
-  border-radius: 6px;
+  border-radius: 9999px;
   transition: background-color 0.2s, color 0.2s;
   color: var(--text-secondary);
   text-decoration: none;
@@ -51,102 +51,21 @@
   }
 }
 
-.theme-toggle {
-  display: flex;
+.theme-toggle{
+  display: inline-flex;
   align-items: center;
-  justify-content: flex-start;
-  gap: 4px;
-  position: relative;
-  min-width: 80px;
-  height: 28px;
-  padding: 0 8px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  border-radius: 14px;
-  transition: background-color 0.3s;
-  background-color: var(--toggle-bg);
-
-  &:hover {
-    opacity: 0.8;
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--focus-color);
-    outline-offset: 2px;
-  }
-
-  .toggle-icons {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 20px;
-    height: 20px;
-    flex-shrink: 0;
-  }
+  justify-content: center;
+  padding: 6px 10px;
+  border-radius: 9999px;
 
   .theme-icon {
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    stroke-width: 2;
-
-    @media (prefers-reduced-motion: reduce) {
-      transition: none;
-    }
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    vertical-align: middle;
+    color: var(--text-primary);
   }
-
-  .sun {
-    opacity: 1;
-    transform: scale(1) rotate(0deg);
-    color: #f59e0b;
-  }
-
-  .moon {
-    opacity: 0;
-    transform: scale(0.8) rotate(-20deg);
-    color: #a78bfa;
-  }
-
-  &[aria-checked="true"] .sun {
-    opacity: 0;
-    transform: scale(0.8) rotate(20deg);
-  }
-
-  &[aria-checked="true"] .moon {
-    opacity: 1;
-    transform: scale(1) rotate(0deg);
-  }
-
-  .toggle-track {
-    display: flex;
-    align-items: center;
-    position: relative;
-    width: 34px;
-    height: 20px;
-    background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
-    flex-shrink: 0;
-    margin-left: auto;
-  }
-
-  .toggle-thumb {
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    background-color: white;
-    border-radius: 50%;
-    transition: transform 0.3s ease;
-    left: 2px;
-    top: 2px;
-
-    @media (prefers-reduced-motion: reduce) {
-      transition: none;
-    }
-  }
-
-  &[aria-checked="true"] .toggle-thumb {
-    transform: translateX(14px);
+  
+  &:hover {
+    background-color: var(--hover-bg);
+    color: var(--text-primary);
   }
 }
