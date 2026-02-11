@@ -10,7 +10,8 @@ import { ThemeService } from './theme.service';
   styleUrl: './app.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    '[class.theme-dark]': 'isDarkTheme()' // ダークテーマの場合にクラスを追加
+    '[class.theme-dark]': 'isDarkTheme()', // ダークテーマの場合にクラスを追加
+    '[style.color-scheme]': 'isDarkTheme() ? "dark" : "light"'
   }
 })
 export class App {
