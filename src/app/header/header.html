@@ -21,7 +21,8 @@
     class="theme-toggle"
     labelPosition="before"
     (change)="toggleTheme()"
-    [checked]="theme() === 'dark'">
+    [checked]="theme() === 'dark'"
+    aria-label="Toggle dark mode">
     <span 
       class="material-symbols-outlined theme-icon">
       {{ theme() === 'dark' ? 'dark_mode' : 'light_mode' }}
