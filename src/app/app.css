@@ -1,5 +1,3 @@
-@import 'leaflet/dist/leaflet.css';
-
 /* Light theme (default) */
 :host {
 	--header-bg: #ffffff;
