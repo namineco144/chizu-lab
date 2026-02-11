@@ -1,15 +1,24 @@
-import { Component, signal, inject, DestroyRef, afterNextRender } from '@angular/core';
+import { Component, signal, inject, DestroyRef, afterNextRender, ChangeDetectionStrategy, computed } from '@angular/core';
 import { Map, TileLayer } from 'leaflet';
+import { HeaderComponent } from './header/header';
+import { ThemeService } from './theme.service';
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  imports: [HeaderComponent],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    '[class.theme-dark]': 'isDarkTheme()', // ダークテーマの場合にクラスを追加
+    '[style.color-scheme]': 'isDarkTheme() ? "dark" : "light"'
+  }
 })
 export class App {
   private readonly destroyRef = inject(DestroyRef);
+  private readonly themeService = inject(ThemeService);
   protected readonly title = signal('chizu-lab');
+  protected readonly isDarkTheme = computed(() => this.themeService.theme() === 'dark');
   private myMap!: Map;
 
   constructor() {
